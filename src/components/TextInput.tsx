@@ -1,27 +1,19 @@
-import React from 'react';
-import {TextInput as RnTextInput, View, StyleSheet} from 'react-native';
+import * as React from "react";
+import { StyleSheet, View, TextInput as RnTextInput } from "react-native";
 
-type TextInputProps = {
-  value?: string;
-  secureTextEntry: boolean;
+const TextInput = (): React.JSX.Element => {
+  return <View style={styles.rectangleView} />;
 };
-
-function TextInput(props: TextInputProps): React.JSX.Element {
-  const {value, secureTextEntry} = props;
-  return (
-    <View style={styles.wrapper}>
-      <RnTextInput value={value} secureTextEntry={secureTextEntry} />
-    </View>
-  );
-}
-
 const styles = StyleSheet.create({
-  wrapper: {
-    padding: 10,
-  },
-  label: {
-    fontWeight: 'bold',
-    padding: 10,
+  rectangleView: {
+    borderRadius: 5,
+    backgroundColor: "#fff",
+    borderStyle: "solid",
+    borderColor: "#c6c6c6",
+    borderWidth: 1,
+    flex: 1,
+    width: "100%",
+    height: 41,
   },
 });
 
