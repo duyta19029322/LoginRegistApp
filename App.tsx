@@ -1,46 +1,35 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- */
-
-import React from "react";
-import type { PropsWithChildren } from "react";
+import React, { useEffect, useState } from "react";
 import {
-  Image,
   SafeAreaView,
-  ScrollView,
-  StatusBar,
-  StyleSheet,
-  Text,
   useColorScheme,
-  View,
-  TextInput,
-  Pressable,
 } from "react-native";
 
 import {
   Colors,
-  DebugInstructions,
-  Header,
-  LearnMoreLinks,
-  ReloadInstructions,
 } from "react-native/Libraries/NewAppScreen";
 import Login from "./src/pages/Login";
 import Register from "./src/pages/Register";
 
 function App(): JSX.Element {
   const isDarkMode = useColorScheme() === "dark";
+  const [isLogin, setIsLogin] = useState<boolean>(true);
 
   const backgroundStyle = {
     backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
   };
 
+  const handleSwithScreens = (isLogin: boolean) => {
+    setIsLogin(isLogin);
+  }
+  
+  useEffect(() => {
+
+  }, [isLogin]);
+
   return (
     <SafeAreaView style={backgroundStyle}>
-        <Login />
-        {/* <Register /> */}
+       {isLogin && <Login onLogin={handleSwithScreens} />}
+        {!isLogin && <Register onSignUp={handleSwithScreens} />}
     </SafeAreaView>
   );
 }
